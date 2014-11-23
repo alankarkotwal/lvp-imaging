@@ -23,8 +23,21 @@ Notes:
 	-- How much redundancy? Convergence speed and LED separation
 	-- Deconvolute image using lens PSF, not a low-pass filter
 
+#**************************************************************************************************************
+
 Day 2
 =====
 
 Work:
--> Coded the basic FPM system specified in the papers
+-> Started coding the basic FPM system specified in the paper
+-> Finalized the presentation
+
+#**************************************************************************************************************
+
+Day 3
+=====
+
+Work:
+-> Finished coding the basic FPM system specified in the paper
+
+#**************************************************************************************************************
