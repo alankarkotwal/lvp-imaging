@@ -8,3 +8,4 @@
 *~
 *.bkp
 *.save
+.~lock*

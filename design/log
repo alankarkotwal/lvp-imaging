@@ -1,0 +1,28 @@
+Day 1
+=====
+
+Discussion:
+-> General introduction, eye stuff, slit lamp
+-> Denoising, illumination correction for raw images
+
+Work:
+-> Familiarised with the lab
+-> Got hold of the camera being used, tested resolution and noise variance
+
+Todos for tomorrow:
+-> LED Matrix, decide what to do for "low illumination by LEDs at edges"
+-> Test-bench: Mostly transparency, no reflection effects on our measurement
+-> 3D print something for the camera
+-> Play around with lens, camera. See how imaging works. Remember the scale markings on your pad
+
+Notes:
+-> Long-term goals, according to me:
+	-- Computation acceleration, GPU Parallelization in Matlab (doesn't take much time)
+	-- How much redundancy? Convergence speed and LED separation
+	-- Deconvolute image using lens PSF, not a low-pass filter
+
+Day 2
+=====
+
+Work:
+-> Coded the basic FPM system specified in the paper
