@@ -12,3 +12,6 @@
 
 # Configuration
 config/path
+
+# Test images
+images/*
