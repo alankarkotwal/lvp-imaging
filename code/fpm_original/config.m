@@ -1,5 +1,5 @@
 %**************************************************************************
-% Fourier Ptychographic Imaging
+% Fourier Ptychographic Imaging for transparent objects, transmitted light
 % Config file
 %
 % Author: Alankar Kotwal <alankarkotwal13@gmail.com>
@@ -9,6 +9,8 @@
 
 % Housekeeping
 
+saveImages = 1;                 % Select if you want to save the raw images
+                                % for later analysis. Saved as *.mat
 imageFolder = 'images/test';    % Folder for saving the input images
 
 %**************************************************************************
@@ -33,6 +35,8 @@ serialPort = '/dev/ttyUSB0';    % If above is 'no', port name
 % Webcam stuff
 
 webcamName = 'linuxvideo';      % Webcam name used by Matlab, find this
-                                % using imaqtool
+                                % using imaqtool in Matlab
 webcamNo = 1;                   % If the above isn't 'winvideo' or
-                                % 'linuxvideo': 1. Otherwise: 0
+                                % 'linuxvideo': 1. Otherwise: 2
+webcamMode = 'YUYV_1280x720';   % Capturing mode for the webcam. Again,
+                                % imaqtool
