@@ -9,3 +9,6 @@
 *.bkp
 *.save
 .~lock*
+
+# Configuration
+config/path
