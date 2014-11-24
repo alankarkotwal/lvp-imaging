@@ -30,7 +30,12 @@ h = 8;                          % Height of the sample from the LED array,
 
 autodetectSerialPort = 0;       % Choose if you want to autodetect serial
                                 % port. Still to be implemented
-serialPort = '/dev/ttyUSB0';    % If above is 0, port name
+serialPort = '/dev/ttyS101';    % If above is 0, port name
+
+% Important: Matlab recongizes serial ports of the form ttyS[0-255]
+% Make sure the Arduino's port (/dev/ttyACM*) has a symbolic link in /dev 
+% which is named /dev/ttyS* (as in the above serialPort variable)
+% I have already done this for /dev/ttyACM0 (=> /dev/ttyS101) in setup
 
 %**************************************************************************
 
@@ -50,6 +55,5 @@ imagesPerTrigger = 1;           % Number of shots to take per angle
 %**************************************************************************
 
 % Output stuff
-xOut = 8192;                    % Number of pixels in the output
-yOut = 4608;                    % Todo: How to choose this? I think it 
-                                % shouldn't matter.
+scale = 10;                     % Factor by which you want to scale the
+                                % image pixels

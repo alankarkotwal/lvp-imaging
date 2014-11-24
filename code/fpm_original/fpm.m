@@ -42,9 +42,16 @@ vid.ReturnedColorspace = 'rgb';
 
 %**************************************************************************
 
+% Output stuff
+
+yOut = scale*yRes;
+xOut = scale*xRes;
+
+%**************************************************************************
+
 % Image acquisition stuff. Here I'm assuming a rectangular LED array
 
-images = zeros(yRes, xRes, 3, nX, nY); % Array of nX x nY 3-channel images
+images = zeros(yOut, xOut, 3, nX, nY); % Array of nX x nY 3-channel images
 kArr = zeros(2, nX, nY);               % Array of nX x nY (kX, kY)
 
 xCen = (nX-1)*xSep/2;                  % Get center coordinates as midpoint
