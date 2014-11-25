@@ -43,8 +43,7 @@ serialPort = '/dev/ttyS101';    % If above is 0, port name
 
 webcamName = 'linuxvideo';      % Webcam name used by Matlab, find this
                                 % using imaqtool in Matlab
-webcamNo = 1;                   % If the above isn't 'winvideo' or
-                                % 'linuxvideo': 1. Otherwise: 2
+webcamNo = 1;                   % Usually 1. Check in imaqtool
 xRes = 1280;                    % X-resolution
 yRes = 720;                     % Y-resolution
 webcamMode = 'YUYV_1280x720';   % Capturing mode for the webcam. Again,
