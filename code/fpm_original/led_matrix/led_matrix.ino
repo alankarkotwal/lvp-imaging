@@ -1,3 +1,5 @@
+/* Source: http://linksprite.com/wiki/index.php5?title=LED_Matrix_Kit */
+
 unsigned char i;
 unsigned char j; 
 /*Port Definitions*/
