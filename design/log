@@ -82,6 +82,8 @@ Work:
 -> Focussed the sample on the camera feed
 -> Aligned the LED array source to center it and illuminate the entire FOV properly
 -> 3D-printing a holder for the LED array
+-> Decided that the test sample would be a transparency because slides are thick and we're not sure where we're
+   focussing if we try to use a slide
 
 #**************************************************************************************************************
 
