@@ -80,7 +80,9 @@ Work:
 -> Found the LED array and made it work
 -> Changed imaging lens to 150mm focal length, 3x magnification
 -> Focussed the sample on the camera feed
+-> Remove dust particles by blowing on the CCD and the lenses!
 -> Aligned the LED array source to center it and illuminate the entire FOV properly
+-> Increase LED intensity?
 -> 3D-printing a holder for the LED array
 -> Decided that the test sample would be a transparency because slides are thick and we're not sure where we're
    focussing if we try to use a slide
@@ -93,8 +95,23 @@ Day 8
 Work:
 -> Finished setting up the system
 -> Camera fixed, both lenses fixed, slide on X stage and LED array source on magnetic mount
+-> Adjust camera contrast, exposure, FPS to get a good image
 -> Aligned the LED array source to center it and illuminate the entire FOV properly
 -> Removed reflection artefacts from the FOV by attaching a paper pipe between the lenses
 -> Improved focus with the LED array using the center LEDs
 -> Imaged the sample illuminating different LEDs. Find images in images/20141129_Transparency
+-> Naming convention is yyyymmdd_Transparency_xy.png. Top left looking from the sample is 11. X increases to
+   the right, Y increases towards the bottom
+-> Distance between the LED matrix surface and the transparency was 21.9cm
+-> OK if LED intensity is unchanged
 -> Working on the mathematics behind the method and processing the images
+
+Questions and insights:
+-> Should the image shift with LEDs? It will shift a bit because incident light direction is changing, that's
+   okay
+-> Illumination from a corner will give sharper images as the corners/boundaries shall gain prominence (we are
+   looking at their projections). We also do not want to lose any phase information as this is essential to do
+   an ifft. The shift in illumination direction wavevector shall introduce a term of the form exp(jwt) which
+   shall introduce the shift in the fourier domain. THis hypothesis is subject to rigorous mathematical
+   verification, which we shall be doing.
+-> We observed that changing the FPS on the camera software changed the contrast - why?
