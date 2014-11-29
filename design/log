@@ -10,11 +10,11 @@ Work:
 -> Got hold of the camera being used, tested resolution and noise variance
 
 Issues and Todos for tomorrow and later:
--> Understand what the method does and the reflective case						| 																
--> LED Matrix, decide what to do for "low illumination by LEDs at edges"				| 
--> Test-bench: Mostly transparency, no reflection effects on our measurement				|
--> 3D print something for the camera									|
--> Play around with lens, camera. See how imaging works. Remember the scale markings on your pad	|
+-> Understand what the method does and the reflective case						| ?? 																
+-> LED Matrix, decide what to do for "low illumination by LEDs at edges"				| Done.
+-> Test-bench: Mostly transparency, no reflection effects on our measurement				| Done.
+-> 3D print something for the camera									| Done.
+-> Play around with lens, camera. See how imaging works. Remember the scale markings on your pad	| Done.
 -> Present your approach										| Done.
 
 Notes:
@@ -38,6 +38,61 @@ Day 3
 =====
 
 Work:
--> Finished coding the basic FPM system specified in the paper
+-> Finished coding the FPM system specified in the paper
 
 #**************************************************************************************************************
+
+Day 4
+=====
+
+Discussion:
+-> Setting up the system for imaging
+-> Optical fibers for light transport?
+-> Selecting lenses for two-lens system (50mm and 50mm)
+-> Familiarised with the optical table and other systems in the lab
+
+#**************************************************************************************************************
+
+Day 5
+=====
+
+Work:
+-> 3D-printing slide holder and holders for the lens system
+-> Aligning lenses and source with the laser
+
+#**************************************************************************************************************
+
+Day 6
+=====
+
+Work:
+-> Re-designing the slide holder and 3D-printing it
+-> Tried to image slide sample with the LED source in lab, ended up imaging diffraction patterns
+-> Diffuse source needed to prevent saturation
+-> Took pictures of the slide under a microscope
+
+#**************************************************************************************************************
+
+Day 7
+=====
+
+Work:
+-> Found the LED array and made it work
+-> Changed imaging lens to 150mm focal length, 3x magnification
+-> Focussed the sample on the camera feed
+-> Aligned the LED array source to center it and illuminate the entire FOV properly
+-> 3D-printing a holder for the LED array
+
+#**************************************************************************************************************
+
+Day 8
+=====
+
+Work:
+-> Finished setting up the system
+-> Camera fixed, both lenses fixed, slide on X stage and LED array source on magnetic mount
+-> Aligned the LED array source to center it and illuminate the entire FOV properly
+-> Removed reflection artefacts from the FOV by attaching a paper pipe between the lenses
+-> Improved focus with the LED array using the center LEDs
+-> Imaged the sample illuminating different LEDs. Find images in images/20141129_Transparency
+-> Working on the mathematics behind the method and processing the images
