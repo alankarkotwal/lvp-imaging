@@ -14,4 +14,4 @@
 config/path
 
 # Test images
-images/*
+# images/*
