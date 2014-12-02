@@ -138,5 +138,9 @@ Work and insights:
    kx, ky. How to verify this? Geometrical optics. Where does the image form when object is in focal plane
    shifted by some distance? In the image plane, shifted by some distance as well. This relation will give
    relation between shifts in Fourier and spatial domains
--> About the lens limiting property: 
+-> About the lens limiting property: We limited the laser with a slit in the Y-direction and imaged it on a wall
+   As expected we saw a sinc along x. Now putting a lens in front of the slit limits the sinc in the x-direction
+   Confirms this. With lens: 6 maxima, without: 12 seen
+-> Convolve these properties => imaging at an angle with a lens is shifting image spectrum to kx, ky and limiting
+   it.
    
