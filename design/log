@@ -1,3 +1,10 @@
+#**************************************************************************************************************
+# Fourier Ptychographic Imaging for transparent objects, transmitted light
+# Implementation of the original paper: Log
+#
+# Author: Alankar Kotwal <alankarkotwal13@gmail.com>
+#**************************************************************************************************************
+
 Day 1
 =====
 
@@ -10,12 +17,12 @@ Work:
 -> Got hold of the camera being used, tested resolution and noise variance
 
 Issues and Todos for tomorrow and later:
--> Understand what the method does and the reflective case						| ?? 																
--> LED Matrix, decide what to do for "low illumination by LEDs at edges"				| Done.
--> Test-bench: Mostly transparency, no reflection effects on our measurement				| Done.
--> 3D print something for the camera									| Done.
+-> Understand what the method does and the reflective case											| ?? 																
+-> LED Matrix, decide what to do for "low illumination by LEDs at edges"							| Done.
+-> Test-bench: Mostly transparency, no reflection effects on our measurement						| Done.
+-> 3D print something for the camera																| Done.
 -> Play around with lens, camera. See how imaging works. Remember the scale markings on your pad	| Done.
--> Present your approach										| Done.
+-> Present your approach																			| Done.
 
 Notes:
 -> Long-term goals, according to me:
@@ -115,3 +122,21 @@ Questions and insights:
    shall introduce the shift in the fourier domain. THis hypothesis is subject to rigorous mathematical
    verification, which we shall be doing.
 -> We observed that changing the FPS on the camera software changed the contrast - why?
+
+#**************************************************************************************************************
+
+Day 10
+======
+
+Work and insights:
+-> Verifying and understanding Fourier Transforming property: Tried with a Gaussian beam and a circular disk as
+   input. Got expected field patterns, so what we're imaging is actually the Fourier transform of the object
+   field pattern!
+-> Shifts: Since the camera is directed 180 deg away from the optical axis (is 'facing backwards') we need to
+   flip all images 180 deg along the Y axis to correct for this
+   After this is done, shifting the source 'shifts' the Fourier transform in the same direction, presumably by
+   kx, ky. How to verify this? Geometrical optics. Where does the image form when object is in focal plane
+   shifted by some distance? In the image plane, shifted by some distance as well. This relation will give
+   relation between shifts in Fourier and spatial domains
+-> About the lens limiting property: 
+   

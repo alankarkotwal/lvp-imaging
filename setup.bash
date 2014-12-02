@@ -21,7 +21,7 @@ fi
 
 # Get the  path of the repository in a file for MATLAB's sake
 
-path=pwd
+path=`pwd`
 ${path//\\/\\\\} > config/path
 
 #****************************************************************
