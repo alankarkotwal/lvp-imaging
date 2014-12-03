@@ -12,8 +12,8 @@ function outputImage = circularMask(size, xC, yC, rad)
 outputImage = zeros(size);
 
 % Shift origin to (0,0) in image
-xCen = xC + size(1)/2;
-yCen = yC + size(2)/2;
+xCen = xC + size(2)/2;
+yCen = -yC + size(1)/2;
 
 % Find closest point to (xC, yC)
 xCenRound = round(xCen);
@@ -23,7 +23,7 @@ yCenRound = round(yCen);
 for i=1:size(1)
     for j=1:size(2)
         
-        if((xCenRound-i)^2 + (yCenRound-j)^2 < rad^2) % Distance condition
+        if((xCenRound-j)^2 + (yCenRound-i)^2 < rad^2) % Distance condition
             outputImage(i, j) = 1;
         end
         

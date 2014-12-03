@@ -19,7 +19,7 @@ path = pwd;
 [~, folder, ~] = fileparts(path);
 
 if(~strcmp('lvp-imaging', folder))
-    error('Run the script in the lvp-imaging directory.');
+    error('Run this script in the lvp-imaging directory.');
 end
 
 %**************************************************************************
@@ -40,10 +40,11 @@ xOut = scale*xRes;
 
 % Calculate some stuff. All calculations in cm unless specified
 wavenum = 2*pi/(lam*10^-7);
-filtRad = wavenum*sin(atan(lensRad/foc)); % In k-space
-xCen = (nX-1)*xSep/2;                  % Get center coordinates as midpoint
-yCen = (nY-1)*ySep/2;                  % of LED array
-pixelSize = pixSize/magnification;     % In the object plane, um
+filtRad = wavenum*sin(atan(lensRad/foc));   % In k-space
+xCen = (nX-1)*xSep/2;                       % Get midpoint
+yCen = (nY-1)*ySep/2;                       % of LED array
+pixelSize = pixSize/(magnification*scale);  % In object plane, um
+pixelWavenumber = 10^-4/pixelSize;          % In object plane, cm^-1
 
 % Initialize the output and generate an upsampled image
 imageSize = [yOut xOut];
@@ -62,6 +63,7 @@ while(count<5)
             % Read the image
             tempImageRead = imread(strcat(imageFolder, '_', int2str(i), ...
                                           int2str(j), '.png'));
+            tempImageRead = tempImageRead(:, :, 1);
             tempImageRead = fliplr(tempImageRead);
             tempImageRead = imresize(tempImageRead, [yOut xOut]);
             tempImageRead = sqrt(double(tempImageRead));
@@ -74,12 +76,13 @@ while(count<5)
             kx = wavenum * xDist/absDist;
             ky = wavenum * yDist/absDist;
             
+            % Get our mask - Only problematic step left! FiltRad?
+            imageMask = circularMask(imageSize, kx, ky, filtRad);
+            imshow(imageMask);
+            
             % Reconstruct HR image from intensity and phase, find FFT
             outputImage = outputIntensity .* exp(sqrt(-1)*outputPhase);
             outputFFT = fftshift(fft2(outputImage));
-            
-            % Get our mask - Only problematic step left! FiltRad?
-            imageMask = circularMask(imageSize, kx, ky, filtRad);
             
             % Then filter around the (i,j)th k vector, get IFFT
             tempFFT = outputFFT .* imageMask;
@@ -101,7 +104,5 @@ while(count<5)
     
 end
 
-outputImage = outputIntensity .* exp(sqrt(-1)*outputPhase);
-imwrite(outputImage, 'images/output.png');
-
-imshow(outputImage);
+figure; imshow(outputIntensity);
+figure; imshow(outputPhase);
