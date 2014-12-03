@@ -38,22 +38,20 @@ xOut = scale*xRes;
 % Algorithm in Zheng, G et al. 2013, "Wide-Field, High-Resolution Fourier
 % Ptychographic Microscopy", Nature Photonics
 
-% Calculate some stuff. All calculations in cm unless specified
+% Calculate some stuff. All calculations in cm
 wavenum = 2*pi/(lam*10^-7);
-filtRad = wavenum*sin(atan(lensRad/foc)); % In k-space
+filtRadK = wavenum*sin(atan(lensRad/foc)); % In k-space
 xCen = (nX-1)*xSep/2;                  % Get center coordinates as midpoint
-yCen = (nY-1)*ySep/2;                  % of LED array
-pixelSize = pixSize/magnification;     % In the object plane, um
+yCen = (nY-1)*ySep/2;                  % of LED array. Change this.
 
 % Initialize the output and generate an upsampled image
 imageSize = [yOut xOut];
 outputIntensity = imresize(sqrt(tempImage), imageSize);
 outputPhase = zeros(yOut, xOut);
 
-count = 0; % Set a convergence criterion as RMSD between this and prev
-           % image. For now, number of iterations
+count = 0;
 
-while(count<5)
+while(count<5)  % Set a convergence criterion as RMSD between this and prev image
     
     % For each image we have taken
     for i=1:nX
@@ -61,28 +59,25 @@ while(count<5)
             
             % Read the image
             tempImageRead = imread(strcat(imageFolder, '_', int2str(i), ...
-                                          int2str(j), '.png'));
+                           int2str(j), '.png'));
             tempImageRead = fliplr(tempImageRead);
             tempImageRead = imresize(tempImageRead, [yOut xOut]);
             tempImageRead = sqrt(double(tempImageRead));
             
             % Get the k parameters for this image
-            % Checked if the minus signs are required, possible debug
-            xDist = xCen - (i-1)*xSep;
-            yDist = yCen - (j-1)*ySep;
-            absDist = sqrt(xDist^2 + yDist^2 + h^2);
-            kx = wavenum * xDist/absDist;
-            ky = wavenum * yDist/absDist;
+            [kx ky] = wavenum * 
             
             % Reconstruct HR image from intensity and phase, find FFT
             outputImage = outputIntensity .* exp(sqrt(-1)*outputPhase);
             outputFFT = fftshift(fft2(outputImage));
             
-            % Get our mask - Only problematic step left! FiltRad?
-            imageMask = circularMask(imageSize, kx, ky, filtRad);
+            % Get our mask
+            imageMask = circularMask(imageSize, kArr(1, i, j), ...
+                                     kArr(2, i, j), filtRad);
             
             % Then filter around the (i,j)th k vector, get IFFT
             tempFFT = outputFFT .* imageMask;
+            % Note: This will depend on the camera orientation. Beware
             tempImage = ifft2(ifftshift(tempFFT));
             
             % Replace this magnitude by the measured magnitude
