@@ -17,18 +17,18 @@ Work:
 -> Got hold of the camera being used, tested resolution and noise variance
 
 Issues and Todos for tomorrow and later:
--> Understand what the method does and the reflective case											| ?? 																
--> LED Matrix, decide what to do for "low illumination by LEDs at edges"							| Done.
--> Test-bench: Mostly transparency, no reflection effects on our measurement						| Done.
--> 3D print something for the camera																| Done.
--> Play around with lens, camera. See how imaging works. Remember the scale markings on your pad	| Done.
--> Present your approach																			| Done.
+-> Understand what the method does and the reflective case                                 | ??                                                 
+-> LED Matrix, decide what to do for "low illumination by LEDs at edges"                     | Done.
+-> Test-bench: Mostly transparency, no reflection effects on our measurement                  | Done.
+-> 3D print something for the camera                                                | Done.
+-> Play around with lens, camera. See how imaging works. Remember the scale markings on your pad   | Done.
+-> Present your approach                                                         | Done.
 
 Notes:
 -> Long-term goals, according to me:
-	-- Computation acceleration, GPU Parallelization in Matlab (doesn't take much time)
-	-- How much redundancy? Convergence speed and LED separation
-	-- Deconvolute image using lens PSF, not a low-pass filter
+   -- Computation acceleration, GPU Parallelization in Matlab (doesn't take much time)
+   -- How much redundancy? Convergence speed and LED separation
+   -- Deconvolute image using lens PSF, not a low-pass filter
 
 #**************************************************************************************************************
 
@@ -143,4 +143,22 @@ Work and insights:
    Confirms this. With lens: 6 maxima, without: 12 seen
 -> Convolve these properties => imaging at an angle with a lens is shifting image spectrum to kx, ky and limiting
    it.
-   
+
+#**************************************************************************************************************
+
+Day 11
+======
+
+Work:
+-> Finishing up code and calculations for transmissive mode
+-> Need a relation between actual k-space and image k-space! This is given here:
+   https://greenfluorescentblog.wordpress.com/2013/01/10/calculating-the-pixel-sizes-on-images/
+   Quoting:
+   Objective magnification
+   Lens magnification (in some microscopes, it is possible to get extra mag of 1.25x, 1.6x or 2x.
+   C mount (is usually 1x)
+   Pixel size – is the actual pixel size of the camera that is attached to the microscope.
+   Binning – i.e. combining a cluster of pixels to a single pixel. The common options are 1X1, 2X2 and 4X4. 
+   The formula: Image pixel size = camera pixel size x binning / (obj. mag x lens mag x C mount)
+-> Some scaling between the image and the real world
+-> Camera used was a ThorLabs <model no>, pixel size <>.
