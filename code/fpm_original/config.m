@@ -13,6 +13,19 @@ imageFolder = '20141129_Transparency'; % Folder for saving the input images
 
 %**************************************************************************
 
+% Pre-processing
+
+regImages = 'no';                        % Should I perform registration?
+regType = 'Multimodal';                   % Type of registration to be used
+metricType = 'affine';
+cropImages = 'yes';
+fixedImageName = '20141129_Transparency_45.png';
+tempImageDir = 'temp/';
+xMargin = 100;                            % Crop margin
+yMargin = 100;
+
+%**************************************************************************
+
 % Imaging system specs
 
 nX = 8;                         % Number of LEDs along X
@@ -24,11 +37,12 @@ h = 21.9;                       % Height of the sample from the LED array,
 lensRad = 1.3;                  % Lens radius in cm
 lam = 632;                      % Wavelength in nm
 foc = 4.9;                      % Focal length of the objective for lambda
-pixSize = 55;                   % Pixel size for the sensor, um
-magnification = 3;              % Imaging system magnification
+pixSize = 5;                    % Pixel size for the sensor, um
+magnification = 3;              % Imaging system magnification, f_obj/f_eye
 
 %**************************************************************************
 
 % Output stuff
-scale = 10;                     % Factor by which you want to scale the
+scale = 20;                     % Factor by which you want to scale the
                                 % image pixels
+maxIter = 1;                    % Maximum number of iterations

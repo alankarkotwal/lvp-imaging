@@ -7,23 +7,19 @@
 % Author: Alankar Kotwal <alankarkotwal13@gmail.com>
 %**************************************************************************
 
-function outputImage = circularMask(size, xC, yC, rad)
+function outputImage = circularMask(size, kxC, kyC, rad, pixelSize)
 
 outputImage = zeros(size);
 
-% Shift origin to (0,0) in image
-xCen = xC + size(2)/2;
-yCen = -yC + size(1)/2;
-
-% Find closest point to (xC, yC)
-xCenRound = round(xCen);
-yCenRound = round(yCen);
+% Get object size in image
+imageSizeX = size(2) * pixelSize;
+imageSizeY = size(1) * pixelSize;
 
 % If distance to center < radius, then pixel = 1
 for i=1:size(1)
     for j=1:size(2)
         
-        if((xCenRound-j)^2 + (yCenRound-i)^2 < rad^2) % Distance condition
+        if(((2*pi*(j-size(2)/2))/imageSizeX - kxC)^2 + ((2*pi*(size(1)/2 - i))/imageSizeY - kyC)^2 < rad^2) % Distance condition
             outputImage(i, j) = 1;
         end
         
