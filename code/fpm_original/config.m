@@ -43,6 +43,6 @@ magnification = 3;              % Imaging system magnification, f_obj/f_eye
 %**************************************************************************
 
 % Output stuff
-scale = 20;                     % Factor by which you want to scale the
+scale = 10;                     % Factor by which you want to scale the
                                 % image pixels
-maxIter = 1;                    % Maximum number of iterations
+maxIter = 5;                    % Maximum number of iterations
