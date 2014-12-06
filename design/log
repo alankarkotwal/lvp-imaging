@@ -161,4 +161,16 @@ Work:
    Binning – i.e. combining a cluster of pixels to a single pixel. The common options are 1X1, 2X2 and 4X4. 
    The formula: Image pixel size = camera pixel size x binning / (obj. mag x lens mag x C mount)
 -> Some scaling between the image and the real world
--> Camera used was a ThorLabs <model no>, pixel size <>.
+-> Camera used was a ThorLabs DCx, pixel size 5um.
+
+#**************************************************************************************************************
+
+Day 14
+======
+
+Work:
+-> Automating the image acquisition process using the DCx camera SDK and libboost
+
+Insights:
+-> Found this: http://www.biophot.caltech.edu/publications/pdf/oe-22-1-338_PhaseSpaceFPM_RH_2014.pdf, reading
+   it to be able to follow the analysis and make a similar analysis for reflective mode.
