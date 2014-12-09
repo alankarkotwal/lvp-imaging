@@ -1,9 +1,10 @@
 \documentclass[11pt,a4paper,journal]{IEEEtran}
 
+\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{cite}
 
-\title{Mathematics and Specifics for FPM \linebreak The Transmissive and Reflective Modes}
+\title{Physics and Specifics for FPM \linebreak The Transmissive and Reflective Modes}
 \author{Alankar~Kotwal,~\IEEEmembership{Indian Institute of Technology Bombay}}
 
 \begin{document}
@@ -22,14 +23,46 @@ Fourier Ptychographic Microscopy, resolution improvement, Fourier optics, transm
 % Add more stuff
 The throughput of a microscope and its imaging system is always limited by its optical system. It is not possible, conventionally, for a given optical system to go beyond the limits set by Fourier optics (think diffraction). This means that the number of `uncorrelated' pixels one can extract out of the system is bounded. As we try to image features closer together, we come across correlations introduced by Fourier optics, which makes it impossible to resolve features more than a given spatial separation apart. Fourier Ptychographic Microscopy was introduced in 2013 as a computational tool to work around this.
 
-The idea used in this method is to somehow shift the high-frequency information to low frequencies, where the system's optics will not filter it. Then we image the resulting object, and computationally form the final high-resolution image by `stitching together' the image in Fourier space using a phase retrieval algorithm. The advantage of this method is that we can perform this at low magnifications, still recover very high frequency information and hence acquire the ability to zoom in and still see features to good resolution, resulting in a wide-field, high-resolution image.
+The idea used in this method is to somehow shift the high-frequency information to low frequencies, where the system's optics will not filter it. Then we image the resulting object, and computationally form the final high-resolution image by `stitching together' the image in Fourier space using a phase retrieval algorithm. The advantage of this method is that we can perform this at low magnifications, still recover very high frequency information and hence acquire the ability to zoom in and see features to good resolution, resulting in a wide-field, high-resolution image.
 
 This frequency shift is achieved using variable illumination. We illuminate the sample using LEDs at different locations below the sample (in the transmissive case). How this leads to a frequency shift is discussed in later sections. The lens filtering function is also characterised in later sections.
 
 \section{Clearing Some Concepts}
+These things must be kept in mind for what follows:
 \begin{itemize}
-\item Why is the image complex? The
+\item \textit{What is the `image', and why is it complex?} The fields involved, are, of course not complex. We represent them as complex numbers to take into consider effects of phase (phasors). The image is the electric field configuration at each pixel. Here, we realise the significance of the complex nature of the image. Fixing the phase at one pixel fixes the phases at all other pixels. We usually take phases to be zero at emission. This fixes phase at all points.
+\item \textit{What do we measure?} We measure electric field intensity. This means, at every pixel, the energy received for the exposure time is recorded and stored. Hence, we are measuring $|\tilde{A}|^2$, where $\tilde{A}$ is the complex field at that pixel. This means, for obtaining the electric field magnitude from the measurements, we need to take a square root of the measurement images.
+\item \textit{Why do we want the phase anyway?} Phase contains a lot of information about the physical nature of the diffracting aperture. So much so that swapping phase components of the Fourier transforms of two images keeping the amplitude images the same swaps visible features as well.
 \end{itemize}
+
+\section{The Transmissive System}
+
+\subsection{The Physics}
+We will now consider the FPM setup in the context of transmissive imaging. The standard setup here consists of a LED array illuminating a sample at a distance \textit{l}. This is followed by an imaging system, usually a microscope objective, that focusses light upon a detector. We used a two-lens system to achieve this purpose. A Thorlabs DCx CCD camera (no optics) was the sensor used for imaging. The sample and the CCD have to be at conjugate planes for a focussed image. We assume that the distance from the sample to the objective lens is $d_0$. Everything other than the objective lens is considered to be the camera's optics \footnote{Find if this is valid.}. All this is summarised in Fig. 1.
+
+\begin{figure}
+  \caption{The standard FPM setup}
+  \centering
+    \includegraphics[scale=1]{fpm_setup}
+\end{figure}
+
+Let us establish a coordinate system as shown in the figure. The origin lies on the optical axis at the LED array, which is centered on the optical axis. The $z$-axis coincides with the optical axis, the $x$-axis points vertically upward and the $y$-axis points into the plane of the paper.
+
+Now consider an LED at coordinates $(x_l, y_l)$ on the $z=0$ plane illuminating the sample at the $z=l$ plane. The plane-wave phasor emitted by this LED will have the form
+\begin{equation}
+\tilde{E}(\vec{r}) = A e^{j \vec{k} \cdot \vec{r}}
+\end{equation}
+where the $\vec{k}$ represents the wavevector at the sample due to the LED at the sample. This is just a vector of magnitude $\frac{2\pi}{\lambda}$ pointing from the LED to the sample. Considering we're focussing on an area around coordinates $(x_s, y_s)$ in the sample ($z=l$) plane, this is easily calculated, and the vector turns out to be
+\begin{equation}
+\vec{k} = \frac{2\pi}{\lambda} \frac{(x_s-x_l)\hat{x}+(y_s-y_l)\hat{y}+l\hat{z}}{\sqrt{(x_s-x_l)^2+(y_s-y_l)^2+l^2}}
+\end{equation}
+
+\subsection{The Implementation}
+
+
+\section{The Transmissive System}
+\subsection{The Physics}
+\subsection{The Implementation}
 
 \begin{thebibliography}{10}
 
@@ -44,6 +77,12 @@ This frequency shift is achieved using variable illumination. We illuminate the 
   \emph{A Phase Space Model of Fourier Ptychographic Microscopy}.
   Optics Express,
   2014.
+  
+\bibitem{Goodman}
+  Goodman, J.,
+  \emph{Introduction to Fourier Optics}, Second Edition.
+  McGraw-Hill Series in Electrical and Computer Engineering,
+  1996.
   
 \end{thebibliography}
 
