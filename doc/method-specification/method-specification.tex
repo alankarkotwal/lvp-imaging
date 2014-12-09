@@ -1,9 +1,36 @@
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper,journal]{IEEEtran}
 
-\title{Method Specification}
-\author{Alankar Kotwal}
+\usepackage{amsmath}
+\usepackage{cite}
+
+\title{Mathematics and Specifics for FPM \linebreak The Transmissive and Reflective Modes}
+\author{Alankar~Kotwal,~\IEEEmembership{Indian Institute of Technology Bombay}}
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+We model the optical system presented in \cite{zheng13} for Fourier Ptychographic Microscopy mathematically. The equations regarding the working of the system are derived from first principles and an implementation is discussed with its specifics. We then explore how the mathematics of the system changes when we move to imaging a reflective system, and specifically the human eye, using the same principles. An implementation for the reflective mode is then discussed.
+\end{abstract}
+
+\begin{keywords}
+% Add more!
+Fourier Ptychographic Microscopy, resolution improvement, Fourier optics, transmissive imaging, reflective imaging
+\end{keywords}
+
+\section{Introduction}
+% Add more stuff
+The throughput of a microscope and its imaging system is always limited by its optical system. It is not possible, conventionally, for a given optical system to go beyond the limits set by Fourier optics (think diffraction). This means that the number of 'uncorrelated' pixels one can extract out of the system is bounded. As we try to image features closer together, we come across correlations introduced by Fourier optics, which makes it impossible to resolve features more than a given spatial separation apart.
+
+\begin{thebibliography}{10}
+
+\bibitem{zheng13}
+  Zheng, G et al.,
+  \emph{Wide-Field, High-Resolution Fourier Ptychographic Microscopy}.
+  Nature Photonics,
+  2013.
+  
+\end{thebibliography}
+
 
 \end{document}
