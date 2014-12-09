@@ -10,7 +10,7 @@
 \maketitle
 
 \begin{abstract}
-We model the optical system presented in \cite{zheng13} for Fourier Ptychographic Microscopy mathematically. The equations regarding the working of the system are derived from first principles and an implementation is discussed with its specifics. We then explore how the mathematics of the system changes when we move to imaging a reflective system, and specifically the human eye, using the same principles. An implementation for the reflective mode is then discussed.
+We model the optical system presented in \cite{FPMPaper} for Fourier Ptychographic Microscopy mathematically. The equations regarding the working of the system and phase retrieval are derived from first principles and an implementation in Matlab is discussed with its specifics. We then explore how the mathematics of the system changes when we move to imaging a reflective system, and specifically the human eye, using the same principles. An implementation for the reflective mode is then discussed.
 \end{abstract}
 
 \begin{keywords}
@@ -20,11 +20,26 @@ Fourier Ptychographic Microscopy, resolution improvement, Fourier optics, transm
 
 \section{Introduction}
 % Add more stuff
-The throughput of a microscope and its imaging system is always limited by its optical system. It is not possible, conventionally, for a given optical system to go beyond the limits set by Fourier optics (think diffraction). This means that the number of 'uncorrelated' pixels one can extract out of the system is bounded. As we try to image features closer together, we come across correlations introduced by Fourier optics, which makes it impossible to resolve features more than a given spatial separation apart.
+The throughput of a microscope and its imaging system is always limited by its optical system. It is not possible, conventionally, for a given optical system to go beyond the limits set by Fourier optics (think diffraction). This means that the number of `uncorrelated' pixels one can extract out of the system is bounded. As we try to image features closer together, we come across correlations introduced by Fourier optics, which makes it impossible to resolve features more than a given spatial separation apart. Fourier Ptychographic Microscopy was introduced in 2013 as a computational tool to work around this.
+
+The idea used in this method is to somehow shift the high-frequency information to low frequencies, where the system's optics will not filter it. Then we image the resulting object, and computationally form the final high-resolution image by `stitching together' the image in Fourier space using a phase retrieval algorithm. The advantage of this method is that we can perform this at low magnifications, still recover very high frequency information and hence acquire the ability to zoom in and still see features to good resolution, resulting in a wide-field, high-resolution image.
+
+This frequency shift is achieved using variable illumination. We illuminate the sample using LEDs at different locations below the sample (in the transmissive case). How this leads to a frequency shift is discussed in later sections. The lens filtering function is also characterised in later sections.
+
+\section{Clearing Some Concepts}
+\begin{itemize}
+\item Why is the image complex? The
+\end{itemize}
 
 \begin{thebibliography}{10}
 
-\bibitem{zheng13}
+\bibitem{FPMPaper}
+  Zheng, G et al.,
+  \emph{Wide-Field, High-Resolution Fourier Ptychographic Microscopy}.
+  Nature Photonics,
+  2013.
+  
+\bibitem{FPMAnalysis}
   Zheng, G et al.,
   \emph{Wide-Field, High-Resolution Fourier Ptychographic Microscopy}.
   Nature Photonics,
