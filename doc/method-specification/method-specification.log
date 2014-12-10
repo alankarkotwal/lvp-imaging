@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.9)  10 DEC 2014 23:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.9)  11 DEC 2014 02:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -262,49 +262,47 @@ e
 ))
 ** ATTENTION: \keywords is deprecated (line 17). Use \IEEEkeywords instead.
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 33.
-<fpm_setup.png, id=1, 156.585pt x 21.07875pt>
-File: fpm_setup.png Graphic file (type png)
- <use fpm_setup.png>
-Package pdftex.def Info: fpm_setup.png used on input line 46.
-(pdftex.def)             Requested size: 156.58461pt x 21.07867pt.
+<FPM_Setup.jpg, id=1, 469.755pt x 323.70938pt>
+File: FPM_Setup.jpg Graphic file (type jpg)
+ <use FPM_Setup.jpg>
+Package pdftex.def Info: FPM_Setup.jpg used on input line 46.
+(pdftex.def)             Requested size: 234.87692pt x 161.8543pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-Overfull \hbox (5.33194pt too wide) detected at line 135
-[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y; l \OT1/cmr/m/n/10.95 + 2\OML/cm
-m/m/it/10.95 f \OT1/cmr/m/n/10.95 + 2\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 
-) = []\OML/cmm/m/it/10.95 e[]\OT1/cmr/m/n/10.95 	 []
- []
+] [2 <./FPM_Setup.jpg>]
+<fpm_setup_refl.png, id=23, 156.585pt x 21.07875pt>
+File: fpm_setup_refl.png Graphic file (type png)
+ <use fpm_setup_refl.png>
+Package pdftex.def Info: fpm_setup_refl.png used on input line 151.
+(pdftex.def)             Requested size: 156.58461pt x 21.07867pt.
 
-[2 <./fpm_setup.png>] [3
-
-] (./method-specification.aux) ) 
+[3 <./fpm_setup_refl.png>] (./method-specification.aux) ) 
 Here is how much of TeX's memory you used:
- 2871 strings out of 494985
- 42732 string characters out of 6180356
- 112096 words of memory out of 5000000
- 6069 multiletter control sequences out of 15000+600000
+ 2877 strings out of 494985
+ 42845 string characters out of 6180356
+ 111096 words of memory out of 5000000
+ 6073 multiletter control sequences out of 15000+600000
  37834 words of font info for 71 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,19n,23p,773b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/
-base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on method-specification.pdf (3 pages, 148436 bytes).
+ 38i,19n,23p,773b,218s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on method-specification.pdf (3 pages, 241408 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
+ 69 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

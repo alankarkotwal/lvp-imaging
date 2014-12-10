@@ -43,7 +43,7 @@ We will now consider the FPM setup in the context of transmissive imaging. The s
 \begin{figure}
   \caption{The standard FPM setup}
   \centering
-    \includegraphics[scale=1]{fpm_setup}
+    \includegraphics[scale=0.5]{FPM_Setup}
 \end{figure}
 
 Let us establish a coordinate system as shown in the figure. The origin lies on the optical axis at the LED array, which is centered on the optical axis. The $z$-axis coincides with the optical axis, the $x$-axis points vertically upward and the $y$-axis points into the plane of the paper.
@@ -128,17 +128,30 @@ r_p = \frac{r_l}{f\lambda}
 \end{equation}
 in units of the spatial frequency.
 
+The Fourier transform of the image in terms of the frequency coordinates $(f_X, f_Y)$ is given as 
+\begin{equation}
+\mathcal{F}[\mathcal{I}] = \tilde{A} \frac{f'^2}{f^2} \tilde{\Psi}\left(-\frac{k_x}{2\pi}-\frac{f_X f'}{f}, -\frac{k_y}{2\pi}-\frac{f_Y f'}{f}\right)
+\end{equation}
+
+It is clear from equation (12) that the frequency content from $(f_X, f_Y) = \left(\frac{-fk_x}{2\pi f'}, \frac{-fk_y}{2\pi f'}\right)$ in the normally illuminated image is brought to zero frequency when illuminated with the LED corresponding to $(k_x, k_y, k_z)$. This scale will also cause the pupil radius to fall by a factor of $\frac{f}{f'}$
+
+Phase retrieval is now easy. We upsample all intensity images by a factor $m$ and take a square root to get electric field magnitudes. $m$ is chosen in a way that does not slow the calculation down (low values preferred) and so that we still have enough resolution to display features close by (high values preferred). A majority of times a value of $5$ to $10$ is observed to give good results.
+
+
 \subsection{The Implementation}
-Now that we know the image looks like 
-\begin{equation*}
-\tilde{E}(x, y, l+2f+2f') = \tilde{A} e^{-j\frac{f}{f'}\left(k_x x + k_y y\right)} \Psi\left(-x\frac{f}{f'}, -y\frac{f}{f'}\right)
-\end{equation*}
-we can stitch the image in the detector plane itself, given the pixel size of the detector.
+We know all characteristics of the image in the detector plane. We will perform all the phase retrieval in the detector plane itself. 
 
 \section{The Reflective System}
-The same physics can be applied now to find how a light wave hitting an optically thick surface will 
+The same physics can be applied now to find how a light wave hitting an optically thick surface will diffract and get imaged on a camera.
 
 \subsection{The Physics}
+\begin{figure}
+  \caption{The setup for the reflective case}
+  \centering
+    \includegraphics[scale=1]{fpm_setup_refl}
+\end{figure}
+Fig. 2 shows the proposed setup for imaging reflective surfaces with this method.
+
 \subsection{The Implementation}
 
 \section{Future Work}
