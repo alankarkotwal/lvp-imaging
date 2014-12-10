@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.9)  11 DEC 2014 02:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.9)  11 DEC 2014 02:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -274,18 +274,18 @@ Package pdftex.def Info: FPM_Setup.jpg used on input line 46.
 <fpm_setup_refl.png, id=23, 156.585pt x 21.07875pt>
 File: fpm_setup_refl.png Graphic file (type png)
  <use fpm_setup_refl.png>
-Package pdftex.def Info: fpm_setup_refl.png used on input line 151.
+Package pdftex.def Info: fpm_setup_refl.png used on input line 156.
 (pdftex.def)             Requested size: 156.58461pt x 21.07867pt.
 
 [3 <./fpm_setup_refl.png>] (./method-specification.aux) ) 
 Here is how much of TeX's memory you used:
- 2877 strings out of 494985
- 42845 string characters out of 6180356
- 111096 words of memory out of 5000000
- 6073 multiletter control sequences out of 15000+600000
- 37834 words of font info for 71 fonts, out of 8000000 for 9000
+ 2897 strings out of 494985
+ 43040 string characters out of 6180356
+ 111099 words of memory out of 5000000
+ 6083 multiletter control sequences out of 15000+600000
+ 44095 words of font info for 84 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,19n,23p,773b,218s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,19n,23p,925b,218s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/te
 xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
@@ -299,7 +299,7 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
 utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on method-specification.pdf (3 pages, 241408 bytes).
+Output written on method-specification.pdf (3 pages, 245293 bytes).
 PDF statistics:
  69 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
