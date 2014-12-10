@@ -30,7 +30,7 @@ This frequency shift is achieved using variable illumination. We illuminate the 
 \section{Clearing Some Concepts}
 These things must be kept in mind for what follows:
 \begin{itemize}
-\item \textit{What is the `image', and why is it complex?} The fields involved, are, of course not complex. We represent them as complex numbers to take into consider effects of phase (phasors). The image is the electric field configuration at each pixel. Here, we realise the significance of the complex nature of the image. Fixing the phase at one pixel fixes the phases at all other pixels. We usually take phases to be zero at emission. This fixes phase at all points.
+\item \textit{What is the `image', and why is it complex?} The fields involved, are, of course not complex. We represent them as complex numbers to consider effects of phase (phasors). The image is the electric field transmittance at each pixel. Here, we realise the significance of the complex nature of the image. Fixing the phase at one pixel fixes the phases at all other pixels. We usually take phases to be zero at emission. This fixes phase at all points.
 \item \textit{What do we measure?} We measure electric field intensity. This means, at every pixel, the energy received for the exposure time is recorded and stored. Hence, we are measuring $|\tilde{A}|^2$, where $\tilde{A}$ is the complex field at that pixel. This means, for obtaining the electric field magnitude from the measurements, we need to take a square root of the measurement images.
 \item \textit{Why do we want the phase anyway?} Phase contains a lot of information about the physical nature of the diffracting aperture. So much so that swapping phase components of the Fourier transforms of two images keeping the amplitude images the same swaps visible features as well.
 \end{itemize}
@@ -38,7 +38,7 @@ These things must be kept in mind for what follows:
 \section{The Transmissive System}
 
 \subsection{The Physics}
-We will now consider the FPM setup in the context of transmissive imaging. The standard setup here consists of a LED array illuminating a sample at a distance \textit{l}. This is followed by an imaging system, usually a microscope objective, that focusses light upon a detector. We used a two-lens system to achieve this purpose. A Thorlabs DCx CCD camera (no optics) was the sensor used for imaging. The sample and the CCD have to be at conjugate planes for a focussed image. We assume that the distance from the sample to the objective lens is $d_0$. Everything other than the objective lens is considered to be the camera's optics \footnote{Find if this is valid.}. All this is summarised in Fig. 1.
+We will now consider the FPM setup in the context of transmissive imaging. The standard setup here consists of a LED array illuminating a sample at a distance \textit{l}. This is followed by an imaging system, usually a microscope objective, that focusses light upon a detector. We used a two-lens system to achieve this purpose. A Thorlabs DCx CCD camera (no optics) was the sensor used for imaging. The sample and the CCD have to be at conjugate planes for a focussed image. We assume that the distance from the sample to the objective lens is $f$, the focal length of the objective lens. Everything other than the objective lens is considered to be the camera's optics \footnote{Find if this is valid.}. All this is summarised in Fig. 1.
 
 \begin{figure}
   \caption{The standard FPM setup}
@@ -52,17 +52,84 @@ Now consider an LED at coordinates $(x_l, y_l)$ on the $z=0$ plane illuminating 
 \begin{equation}
 \tilde{E}(\vec{r}) = A e^{j \vec{k} \cdot \vec{r}}
 \end{equation}
-where the $\vec{k}$ represents the wavevector at the sample due to the LED at the sample. This is just a vector of magnitude $\frac{2\pi}{\lambda}$ pointing from the LED to the sample. Considering we're focussing on an area around coordinates $(x_s, y_s)$ in the sample ($z=l$) plane, this is easily calculated, and the vector turns out to be
+where the $\vec{k}$ represents the wavevector due to the LED at the sample and $j=\sqrt{-1}$. This is just a vector of magnitude $\frac{2\pi}{\lambda}$ pointing from the LED to the sample. Considering we're focussing on an area around coordinates $(x_s, y_s)$ in the sample $(z=l)$ plane, this is easily calculated, and the vector turns out to be
 \begin{equation}
 \vec{k} = \frac{2\pi}{\lambda} \frac{(x_s-x_l)\hat{x}+(y_s-y_l)\hat{y}+l\hat{z}}{\sqrt{(x_s-x_l)^2+(y_s-y_l)^2+l^2}}
 \end{equation}
 
+Once we have this, we can calculate the field configuration in the sample plane:
+\begin{equation}
+\begin{split}
+\tilde{E}(x, y, l^-) & = A e^{j(k_x x + k_y y + k_z l)} \\
+				   & = Ae^{jk_z l} e^{j(k_x x + k_y y)} \\
+				   & = \tilde{A} e^{j(k_x x + k_y y)}
+\end{split}
+\end{equation}
+The last equality follows from the fact that once $k_x$ and $k_y$ are known, $k_z$ is determined.
+
+This electric field then passes through the sample. Assuming the sample is thin enough, the field is modulated by the transmittance function of the sample, which we want to estimate. Let the transmittance be $\Psi (x, y)$.
+\begin{equation}
+\tilde{E}(x, y, l^+) = \tilde{A} \Psi (x, y) e^{j(k_x x + k_y y)}
+\end{equation}
+%We will drop the $\tilde{A}$ from now on for convenience, since it is constant given $z$.
+
+We now invoke the Fourier transforming property of lenses \cite[p.~104]{Goodman}, since the electric field configuration at the front focal plane of the lens is known. We neglect the lens pupil function for now. The field at the back focal plane is, thus, 
+\begin{equation}
+\begin{split}
+\tilde{E}(x, y, l+2f) &= \mathcal{F}[\tilde{A} \Psi (x, y) e^{j(k_x x + k_y y)}] \bigg|_{f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}} \\
+					  &= \tilde{A} \tilde{\Psi}\left(f_X - \frac{k_x}{2\pi}, f_Y - \frac{k_y}{2\pi}\right) \bigg|_{f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}}
+\end{split}
+\end{equation}
+where $\tilde{\Psi}(f_X, f_Y)$ is the Fourier transform in terms of spatial frequency variables $f_X$ and $f_Y$. Proceeding, 
+\begin{equation}
+\tilde{E}(x, y, l+2f) = \tilde{A} \tilde{\Psi}\left(\frac{x}{f\lambda} - \frac{k_x}{2\pi}, \frac{y}{f\lambda} - \frac{k_y}{2\pi}\right)
+\end{equation}
+
+The detector, being on the conjugate plane on the other side of the (eyepiece) lens, images the Fourier transform of this, that is, a scaled and inverted version of the original image. If the eyepiece lens has a focal length $f'$, we have, again using the Fourier transforming property of lenses,
+\begin{equation}
+\begin{split}
+\tilde{E}(x, y, d) &= \mathcal{F}[\tilde{E}(x, y, l+2f)] \bigg|_{f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}} \\
+&= \tilde{A} e^{-j\frac{f}{f'}\left(k_x x + k_y y\right)} \Psi\left(-x\frac{f}{f'}, -y\frac{f}{f'}\right)
+\end{split}
+\end{equation}
+with $d=l+2f+2f'$.
+
+This is consistent with the fact that the image formed is inverted and magnified by a factor of $\frac{f}{f'}$.
+
+The intensity is, thus,
+\begin{equation}
+|\tilde{E}(x, y, d)|^2 = \left|\tilde{A} \Psi\left(-x\frac{f}{f'}, -y\frac{f}{f'}\right)\right|^2
+\end{equation}
+
+Equation (6) is how oblique illumination leads to a frequency shift. The information at spatial frequency $f_X = \frac{k_x}{2\pi}, f_Y = \frac{k_y}{2\pi}$ is brought to zero frequency.
+
+Now we need to model the effect of the pupil function of the lens. The pupil function restricts the amount of light entering the camera to a circle of radius $r_{l}$. Thus, this circular function gets multiplied pointwise with the electric field after passing through the lens:
+\begin{equation}
+circ(x, y) = \left\{
+  \begin{array}{lr}
+    1 & : \sqrt{x^2 + y^2} \le r_{l} \\
+    0 & : \sqrt{x^2 + y^2} > r_{l}
+  \end{array}
+\right.
+\end{equation}
+This corresponds to a convolution in Fourier space with the corresponding Fourier transform. The Fourier transform of this circular function is
+\begin{equation}
+\mathcal{F}[circ(x, y)] = \frac{r_{l} J_1(2\pi r_l \sqrt{f_X ^2 + f_Y ^2})}{\sqrt{f_X ^2 + f_Y ^2}}
+\end{equation}
+where $J_1(x)$ is the Bessel function of the first kind with $\alpha=1$.
+
 \subsection{The Implementation}
+Now that we know the image looks like 
+\begin{equation*}
+\tilde{E}(x, y, l+2f+2f') = \tilde{A} e^{-j\frac{f}{f'}\left(k_x x + k_y y\right)} \Psi\left(-x\frac{f}{f'}, -y\frac{f}{f'}\right)
+\end{equation*}
+we can stitch the image in the detector plane itself, given the pixel size of the detector.
 
-
-\section{The Transmissive System}
+\section{The Reflective System}
 \subsection{The Physics}
 \subsection{The Implementation}
+
+\section{Future Work}
 
 \begin{thebibliography}{10}
 
