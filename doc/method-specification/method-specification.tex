@@ -21,7 +21,7 @@ Fourier Ptychographic Microscopy, resolution improvement, Fourier optics, transm
 
 \section{Introduction}
 % Add more stuff
-The throughput of a microscope and its imaging system is always limited by its optical system. It is not possible, conventionally, for a given optical system to go beyond the limits set by Fourier optics (think diffraction). This means that the number of `uncorrelated' pixels one can extract out of the system is bounded. As we try to image features closer together, we come across correlations introduced by Fourier optics, which makes it impossible to resolve features more than a given spatial separation apart. Fourier Ptychographic Microscopy was introduced in 2013 as a computational tool to work around this.
+The throughput of a microscope is always limited by its optical system. It is not possible, conventionally, for a given optical system to perform beyond the limits set by Fourier optics (think diffraction). This means that the number of `uncorrelated' pixels one can extract out of the system is bounded. As we try to image features closer together, we come across correlations introduced by Fourier optics, which makes it impossible to resolve features more than a given spatial separation apart. Fourier Ptychographic Microscopy was introduced in 2013 as a computational tool to work around this.
 
 The idea used in this method is to somehow shift the high-frequency information to low frequencies, where the system's optics will not filter it. Then we image the resulting object, and computationally form the final high-resolution image by `stitching together' the image in Fourier space using a phase retrieval algorithm. The advantage of this method is that we can perform this at low magnifications, still recover very high frequency information and hence acquire the ability to zoom in and see features to good resolution, resulting in a wide-field, high-resolution image.
 
@@ -38,7 +38,7 @@ These things must be kept in mind for what follows:
 \section{The Transmissive System}
 
 \subsection{The Physics}
-We will now consider the FPM setup in the context of transmissive imaging. The standard setup here consists of a LED array illuminating a sample at a distance \textit{l}. This is followed by an imaging system, usually a microscope objective, that focusses light upon a detector. We used a two-lens system to achieve this purpose. A Thorlabs DCx CCD camera (no optics) was the sensor used for imaging. The sample and the CCD have to be at conjugate planes for a focussed image. We assume that the distance from the sample to the objective lens is $f$, the focal length of the objective lens. Everything other than the objective lens is considered to be the camera's optics \footnote{Find if this is valid.}. All this is summarised in Fig. 1.
+We will now consider the FPM setup in the context of transmissive imaging. The standard setup here consists of a LED array illuminating a sample at a distance \textit{l}. This is followed by an imaging system, usually a microscope objective, that focusses light upon a detector. We used a two-lens system to achieve this purpose. A Thorlabs DCx CCD camera (no optics) was the sensor used for imaging. The sample and the CCD have to be at conjugate planes for a focussed image. We assume that the distance from the sample to the objective lens is $f$, the focal length of the objective lens. The detector is placed at a distance $f'$, the focal length of the eyepiece, away from the eyepiece lens. All this is summarised in Fig. 1.
 
 \begin{figure}
   \caption{The standard FPM setup}
@@ -76,11 +76,11 @@ This electric field then passes through the sample. Assuming the sample is thin 
 We now invoke the Fourier transforming property of lenses \cite[p.~104]{Goodman}, since the electric field configuration at the front focal plane of the lens is known. We neglect the lens pupil function for now. The field at the back focal plane is, thus, 
 \begin{equation}
 \begin{split}
-\tilde{E}(x, y, l+2f) &= \mathcal{F}[\tilde{A} \Psi (x, y) e^{j(k_x x + k_y y)}] \bigg|_{f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}} \\
+\tilde{E}(x, y, d') &= \mathcal{F}[\tilde{A} \Psi (x, y) e^{j(k_x x + k_y y)}] \bigg|_{f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}} \\
 					  &= \tilde{A} \tilde{\Psi}\left(f_X - \frac{k_x}{2\pi}, f_Y - \frac{k_y}{2\pi}\right) \bigg|_{f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}}
 \end{split}
 \end{equation}
-where $\tilde{\Psi}(f_X, f_Y)$ is the Fourier transform in terms of spatial frequency variables $f_X$ and $f_Y$. Proceeding, 
+where $\tilde{\Psi}(f_X, f_Y)$ is the Fourier transform in terms of spatial frequency variables $f_X$ and $f_Y$, and $d'=l+2f$. Proceeding, 
 \begin{equation}
 \tilde{E}(x, y, l+2f) = \tilde{A} \tilde{\Psi}\left(\frac{x}{f\lambda} - \frac{k_x}{2\pi}, \frac{y}{f\lambda} - \frac{k_y}{2\pi}\right)
 \end{equation}
@@ -103,7 +103,7 @@ The intensity is, thus,
 
 Equation (6) is how oblique illumination leads to a frequency shift. The information at spatial frequency $f_X = \frac{k_x}{2\pi}, f_Y = \frac{k_y}{2\pi}$ is brought to zero frequency.
 
-Now we need to model the effect of the pupil function of the lens. The pupil function restricts the amount of light entering the camera to a circle of radius $r_{l}$. Thus, this circular function gets multiplied pointwise with the electric field after passing through the lens:
+Now we need to model the effect of the pupil function of the lens. The pupil function restricts the amount of light proceeding towards the camera to a circle of radius $r_{l}$. Thus, the following circular function gets multiplied pointwise with the electric field after passing through the lens:
 \begin{equation}
 circ(x, y) = \left\{
   \begin{array}{lr}
@@ -118,6 +118,16 @@ This corresponds to a convolution in Fourier space with the corresponding Fourie
 \end{equation}
 where $J_1(x)$ is the Bessel function of the first kind with $\alpha=1$.
 
+Now since we limit the source to a radius of $r_l$, we limit the frequency domain space to $\frac{r_l}{f\lambda}$. This is because the frequency domain and spatial domain are related by
+\begin{equation*}
+f_X=\frac{x}{f\lambda}, f_Y=\frac{y}{f\lambda}
+\end{equation*}
+This means, the radius of the circle around the center (the 'pupil') where the Fourier spectrum contains valid information is
+\begin{equation}
+r_p = \frac{r_l}{f\lambda}
+\end{equation}
+in units of the spatial frequency.
+
 \subsection{The Implementation}
 Now that we know the image looks like 
 \begin{equation*}
@@ -126,6 +136,8 @@ Now that we know the image looks like
 we can stitch the image in the detector plane itself, given the pixel size of the detector.
 
 \section{The Reflective System}
+The same physics can be applied now to find how a light wave hitting an optically thick surface will 
+
 \subsection{The Physics}
 \subsection{The Implementation}
 

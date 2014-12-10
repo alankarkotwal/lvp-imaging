@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.9)  10 DEC 2014 22:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.9)  10 DEC 2014 23:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -271,12 +271,7 @@ Package pdftex.def Info: fpm_setup.png used on input line 46.
 
 
 ]
-Overfull \hbox (14.3024pt too wide) in paragraph at lines 82--82
-[] 
- []
-
-
-Overfull \hbox (5.33194pt too wide) detected at line 125
+Overfull \hbox (5.33194pt too wide) detected at line 135
 []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x; y; l \OT1/cmr/m/n/10.95 + 2\OML/cm
 m/m/it/10.95 f \OT1/cmr/m/n/10.95 + 2\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 
 ) = []\OML/cmm/m/it/10.95 e[]\OT1/cmr/m/n/10.95 	 []
@@ -286,13 +281,13 @@ m/m/it/10.95 f \OT1/cmr/m/n/10.95 + 2\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95
 
 ] (./method-specification.aux) ) 
 Here is how much of TeX's memory you used:
- 2890 strings out of 494985
- 42920 string characters out of 6180356
+ 2871 strings out of 494985
+ 42732 string characters out of 6180356
  112096 words of memory out of 5000000
- 6079 multiletter control sequences out of 15000+600000
- 42999 words of font info for 83 fonts, out of 8000000 for 9000
+ 6069 multiletter control sequences out of 15000+600000
+ 37834 words of font info for 71 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,19n,23p,787b,256s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,19n,23p,773b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/
 base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
@@ -306,7 +301,7 @@ s/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1
 mes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on method-specification.pdf (3 pages, 147053 bytes).
+Output written on method-specification.pdf (3 pages, 148436 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
